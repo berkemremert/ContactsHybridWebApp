@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/berkemremert/Documents/DotNetProjects/ContactsHybridWebApp/ContactsHybridWebsiteApp/obj/Debug/net8.0/scopedcss/projectbundle/ContactsHybridWebsiteApp.bundle.scp.css",
+      "PackagePath": "staticwebassets/ContactsHybridWebsiteApp.bundle.scp.css"
+    },
+    {
+      "Id": "/Users/berkemremert/Documents/DotNetProjects/ContactsHybridWebApp/ContactsHybridWebsiteApp/wwwroot/app.css",
+      "PackagePath": "staticwebassets/app.css"
+    },
+    {
+      "Id": "/Users/berkemremert/Documents/DotNetProjects/ContactsHybridWebApp/ContactsHybridWebsiteApp/wwwroot/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/berkemremert/Documents/DotNetProjects/ContactsHybridWebApp/ContactsHybridWebsiteApp/wwwroot/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/berkemremert/Documents/DotNetProjects/ContactsHybridWebApp/ContactsHybridWebsiteApp/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.ContactsHybridWebsiteApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.ContactsHybridWebsiteApp.props",
+      "PackagePath": "build\\ContactsHybridWebsiteApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.ContactsHybridWebsiteApp.props",
+      "PackagePath": "buildMultiTargeting\\ContactsHybridWebsiteApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.ContactsHybridWebsiteApp.props",
+      "PackagePath": "buildTransitive\\ContactsHybridWebsiteApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

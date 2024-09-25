@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/berkemremert/Documents/DotNetProjects/ContactsHybridWebApp/RazorClassLibrary/wwwroot/background.png",
+      "PackagePath": "staticwebassets/background.png"
+    },
+    {
+      "Id": "/Users/berkemremert/Documents/DotNetProjects/ContactsHybridWebApp/RazorClassLibrary/wwwroot/exampleJsInterop.js",
+      "PackagePath": "staticwebassets/exampleJsInterop.js"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.RazorClassLibrary.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.RazorClassLibrary.props",
+      "PackagePath": "build\\RazorClassLibrary.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.RazorClassLibrary.props",
+      "PackagePath": "buildMultiTargeting\\RazorClassLibrary.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.RazorClassLibrary.props",
+      "PackagePath": "buildTransitive\\RazorClassLibrary.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,1 @@
+-v --force --timestamp=none --sign - --entitlements /Users/berkemremert/Documents/DotNetProjects/ContactsHybridWebApp/ContactsHybridWebApp/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/Entitlements.xcent /Users/berkemremert/Documents/DotNetProjects/ContactsHybridWebApp/ContactsHybridWebApp/bin/Debug/net8.0-maccatalyst/maccatalyst-arm64/ContactsHybridWebApp.app

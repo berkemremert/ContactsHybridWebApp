@@ -1,0 +1,166 @@
+﻿@page "/contactsPage"
+@using ContactsHybridWebApp.Models;
+@using ContactsHybridWebApp.Services;
+@inject ContactService ContactService
+
+<h3 class="text-center">Contacts</h3>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Favourite</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (contacts?.Any() ?? false)
+            {
+                @foreach (var contact in contacts)
+                {
+                    <tr>
+                        @if (editingContact == contact)
+                        {
+                            <td><input class="form-control" @bind="editingContact.FirstName" /></td>
+                            <td><input class="form-control" @bind="editingContact.LastName" /></td>
+                            <td><input class="form-control" @bind="editingContact.PhoneNumber" /></td>
+                            <td><input class="form-control" @bind="editingContact.Address" /></td>
+                            <td><input type="checkbox" @bind="editingContact.IsFav" /></td>
+                            <td>
+                                <button class="btn btn-success" @onclick="() => SaveEditContact(contact)">Save</button>
+                                <button class="btn btn-secondary" @onclick="CancelEdit">Cancel</button>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>@contact.FirstName</td>
+                            <td>@contact.LastName</td>
+                            <td>@contact.PhoneNumber</td>
+                            <td>@contact.Address</td>
+                            <td>@(contact.IsFav ? "❤️" : "")</td>
+                            <td>
+                                <button class="btn btn-warning" @onclick="() => EditContact(contact)">Edit</button>
+                                <button class="btn btn-danger" @onclick="() => DeleteContact(contact)">Delete</button>
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td class="text-center" colspan="6">No Contacts Added</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center mb-4">
+    <button class="btn btn-primary" @onclick="ToggleAddContact">@(showAddContact ? "Hide" : "Add Contact")</button>
+</div>
+
+@if (showAddContact)
+{
+    <div class="row mt-3">
+        <div class="col-md-4 mb-3 mx-auto">
+            <input class="form-control" placeholder="First Name" @bind="contact.FirstName" />
+        </div>
+        <div class="col-md-4 mb-3 mx-auto">
+            <input class="form-control" placeholder="Last Name" @bind="contact.LastName" />
+        </div>
+        <div class="col-md-4 mb-3 mx-auto">
+            <input class="form-control" placeholder="Phone Number" @bind="contact.PhoneNumber" />
+        </div>
+        <div class="col-md-4 mb-3 mx-auto">
+            <input class="form-control" placeholder="Address" @bind="contact.Address" />
+        </div>
+        <div class="col-md-4 mb-3 mx-auto">
+            <label class="form-check-label me-2" title="Mark as Favourite">
+                <input type="checkbox" class="form-check-input" @bind="contact.IsFav" /> Favourite
+            </label>
+        </div>
+        <div class="col-md-4 mb-3 mx-auto">
+            <button class="btn btn-primary" @onclick="AddContact">Add Contact</button>
+        </div>
+    </div>
+}
+
+@code {
+    private List<SimpleContact> contacts = new List<SimpleContact>();
+    private SimpleContact contact = new();
+    private SimpleContact? editingContact = null;
+    private bool showAddContact = false;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        var items = ContactService.LoadContacts();
+        contacts.AddRange(items);
+    }
+
+    void AddContact()
+    {
+        if (string.IsNullOrWhiteSpace(contact.FirstName) ||
+            string.IsNullOrWhiteSpace(contact.LastName) ||
+            string.IsNullOrWhiteSpace(contact.PhoneNumber) ||
+            string.IsNullOrWhiteSpace(contact.Address))
+        {
+            return;
+        }
+
+        contacts.Add(new SimpleContact
+        {
+            FirstName = contact.FirstName,
+            LastName = contact.LastName,
+            PhoneNumber = contact.PhoneNumber,
+            Address = contact.Address,
+            IsFav = contact.IsFav
+        });
+
+        contact = new SimpleContact();
+        StateHasChanged();
+
+        SaveContacts();
+    }
+
+    void SaveContacts()
+    {
+        ContactService.SaveContacts(contacts);
+    }
+
+    void EditContact(SimpleContact contact)
+    {
+        editingContact = contact;
+    }
+
+    void SaveEditContact(SimpleContact originalContact)
+    {
+        editingContact = null;
+
+        SaveContacts();
+    }
+
+    void CancelEdit()
+    {
+        editingContact = null;
+    }
+
+    void DeleteContact(SimpleContact contact)
+    {
+        contacts.Remove(contact);
+
+        SaveContacts();
+    }
+
+    void ToggleAddContact()
+    {
+        showAddContact = !showAddContact;
+        contact = new SimpleContact();
+    }
+}
